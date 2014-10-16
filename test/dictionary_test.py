@@ -1,27 +1,27 @@
-import fuzzy_match.matchers as matchers
+from fuzzy_match import includes_elements, same_elements
 
 
 def test_includes_elements_passes_on_super_set():
-    assert matchers.includes_elements(foo='bar') == {
+    assert includes_elements(foo='bar') == {
         'foo': 'bar',
         'bob': 'barker'
     }
 
 
 def test_includes_elements_fails_on_sub_set():
-    assert not matchers.includes_elements(foo='bar') == {'bob': 'barker'}
+    assert not includes_elements(foo='bar') == {'bob': 'barker'}
 
 
 def test_same_elements_passes_on_identical_dict():
-    assert matchers.same_elements(foo='bar') == {'foo': 'bar'}
+    assert same_elements(foo='bar') == {'foo': 'bar'}
 
 
 def test_same_elements_fails_on_super_set():
-    assert not matchers.same_elements(foo='bar') == {
+    assert not same_elements(foo='bar') == {
         'foo': 'bar',
         'bob': 'barker'
     }
 
 
 def test_same_elements_fails_on_sub_set():
-    assert not matchers.same_elements(foo='bar', bob='bob') == {'foo': 'bar'}
+    assert not same_elements(foo='bar', bob='bob') == {'foo': 'bar'}
