@@ -11,6 +11,13 @@ from object_matchers import MatchAnythingTruthy
 from object_matchers import MatchAnythingFalsey
 from object_matchers import MatchAnyInstanceOf as any_instance  # noqa
 
+from number_matchers import LessThan as less_than  # noqa
+from number_matchers import LessThanOrEqual as less_than_or_equal  # noqa
+from number_matchers import GreaterThan as greater_than  # noqa
+from number_matchers import GreaterThanOrEqual as greater_than_or_equal  # noqa
+from number_matchers import WithinRange as between  # noqa
+from number_matchers import PlusOrMinus as plus_or_minus  # noqa
+
 anything = MatchAnything()
 anything_false = MatchAnythingFalsey()
 anything_true = MatchAnythingTruthy()
