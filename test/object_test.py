@@ -31,3 +31,7 @@ def test_anything_false_does_not_match_true():
 
 def test_any_instance_matches():
     assert any_instance(dict) == {}
+
+
+def test_any_instance_with_multiple_types():
+    assert any_instance(dict, tuple) == (1, 2)

@@ -21,4 +21,4 @@ class MatchAnythingFalsey(Matcher):
 
 class MatchAnyInstanceOf(Matcher):
     def __eq__(self, value):
-        return isinstance(value, *self.args)
+        return isinstance(value, self.args)
