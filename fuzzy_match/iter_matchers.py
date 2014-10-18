@@ -3,7 +3,7 @@ class Matcher(object):
         self.args = args
 
 
-class IteratorIncludes(Matcher):
+class Includes(Matcher):
     def __eq__(self, value):
         for v in self.args:
             if v not in value:
@@ -11,8 +11,8 @@ class IteratorIncludes(Matcher):
         return True
 
 
-class IteratorSameElements(IteratorIncludes):
+class SameElements(Includes):
     def __eq__(self, value):
         if not len(value) == len(self.args):
             return False
-        return super(IteratorSameElements, self).__eq__(value)
+        return super(SameElements, self).__eq__(value)

@@ -1,16 +1,26 @@
+from functools import wraps
+
 import iter_matchers
 import dict_matchers
 
 
-def includes_elements(*args, **kwargs):
-    if kwargs:
-        return dict_matchers.DictIncludes(**kwargs)
-    else:
-        return iter_matchers.IteratorIncludes(*args)
+def delegater(func):
+    @wraps(func)
+    def wrapped(*args, **kwargs):
+        return func(
+            dict_matchers if kwargs else iter_matchers,
+            *args,
+            **kwargs
+        )
+
+    return wrapped
 
 
-def same_elements(*args, **kwargs):
-    if kwargs:
-        return dict_matchers.DictSameElements(**kwargs)
-    else:
-        return iter_matchers.IteratorSameElements(*args)
+@delegater
+def includes_elements(module, *args, **kwargs):
+    return module.Includes(*args, **kwargs)
+
+
+@delegater
+def same_elements(module, *args, **kwargs):
+    return module.SameElements(*args, **kwargs)

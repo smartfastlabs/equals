@@ -3,7 +3,7 @@ class Matcher(object):
         self.kwargs = kwargs
 
 
-class DictIncludes(Matcher):
+class Includes(Matcher):
     def __eq__(self, value):
         for k, v in self.kwargs.items():
             if k not in value or not value[k] == v:
@@ -11,8 +11,8 @@ class DictIncludes(Matcher):
         return True
 
 
-class DictSameElements(DictIncludes):
+class SameElements(Includes):
     def __eq__(self, value):
         if not len(value) == len(self.kwargs):
             return False
-        return super(DictSameElements, self).__eq__(value)
+        return super(SameElements, self).__eq__(value)
