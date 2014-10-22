@@ -46,6 +46,20 @@ objects:
     instance_of(Dummy).with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
 
 
+Usage with Mock:
+-------
+    test_object = Mock()
+    test_object.method({'bob': 'barker'})
+    test_object.method.assert_called_with(instance_of(dict))
+
+Usage with doubles:
+-------
+    test_object = TestClass()
+    expect(test_object).method.with_args(contains('bob'))
+
+    test_object.method('bob barker')
+
+
 License:
 -------
 
