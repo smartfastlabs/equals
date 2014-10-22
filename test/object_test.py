@@ -1,37 +1,66 @@
-from fuzzy_match import anything, anything_true, anything_false, any_instance
+from collections import namedtuple
+
+from fuzzy_match import (
+    anything,
+    anything_true,
+    anything_false,
+    any_instance,
+    has_attrs,
+)
+
+Dummy = namedtuple('Dummy', ['foo', 'bob'])
 
 
-def test_anything_matches_none():
-    assert anything == None  # noqa
+class TestAnything(object):
+    def test_equals_none(self):
+        assert anything == None  # noqa
+
+    def test_equals_true(self):
+        assert anything == True  # noqa
 
 
-def test_anything_matches_true():
-    assert anything == True  # noqa
+class TestAnythingTrue(object):
+    def test_equals_true(self):
+        assert anything_true == True  # noqa
+
+    def test_equals_a_string(self):
+        assert anything_true == 'test'
+
+    def test_does_not_equal_false(self):
+        assert not anything_true == False  # noqa
 
 
-def test_anything_true_matches_true():
-    assert anything_true == True  # noqa
+class TestAnythingFalse(object):
+    def test_equalsfalse(self):
+        assert anything_false == False  # noqa
+
+    def test_does_not_equal_true(self):
+        assert not anything_false == True  # noqa
 
 
-def test_anything_true_matches_a_string():
-    assert anything_true == 'test'
+class TestAnyInstance(object):
+    def test_equals_same_type(self):
+        assert any_instance(dict) == {}
+
+    def test_equals_same_type_with_multiple_types(self):
+        assert any_instance(dict, tuple) == (1, 2)
 
 
-def test_anything_true_does_not_match_false():
-    assert not anything_true == False  # noqa
+class TestHasAttrs(object):
+    def test_equals_instance_with_all_attrs(self):
+        assert has_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
 
+    def test_does_not_equal_instance_with_all_attrs_but_diff_values(self):
+        assert not has_attrs(foo='bar', bob='bar') == Dummy('bar', 'barker')
 
-def test_anything_false_matches_false():
-    assert anything_false == False  # noqa
+    def test_does_not_equal_instance_without_all_attrs(self):
+        matcher = has_attrs(foo='bar', cat='barker')
+        assert not matcher == Dummy('bar', 'barker')
 
+    def test_equals_instance_of_correct_type(self):
+        matcher = has_attrs(Dummy, foo='bar', bob='barker')
+        assert matcher == Dummy('bar', 'barker')
 
-def test_anything_false_does_not_match_true():
-    assert not anything_false == True  # noqa
-
-
-def test_any_instance_matches():
-    assert any_instance(dict) == {}
-
-
-def test_any_instance_with_multiple_types():
-    assert any_instance(dict, tuple) == (1, 2)
+    def test_does_not_equal_instance_of_wrong_type(self):
+        matcher = has_attrs(dict, foo='bar', bob='barker')
+        assert not matcher == Dummy('bar', 'barker')
