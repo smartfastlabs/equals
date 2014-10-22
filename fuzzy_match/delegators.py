@@ -17,7 +17,7 @@ def delegater(func):
 
 
 @delegater
-def includes_elements(module, *args, **kwargs):
+def has_elements(module, *args, **kwargs):
     return module.Includes(*args, **kwargs)
 
 

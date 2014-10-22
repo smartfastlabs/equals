@@ -4,7 +4,7 @@ from string_matchers import StringEndsWithMatcher as endswith  # noqa
 from string_matchers import StringRegexMatcher as matches  # noqa
 
 from delegators import same_elements  # noqa
-from delegators import includes_elements  # noqa
+from delegators import has_elements  # noqa
 
 from object_matchers import MatchAnything
 from object_matchers import MatchAnythingTruthy

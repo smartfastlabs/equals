@@ -1,15 +1,15 @@
-from fuzzy_match import includes_elements, same_elements
+from fuzzy_match import has_elements, same_elements
 
 
-def test_includes_elements_passes_on_super_set():
-    assert includes_elements(foo='bar') == {
+def test_has_elements_passes_on_super_set():
+    assert has_elements(foo='bar') == {
         'foo': 'bar',
         'bob': 'barker'
     }
 
 
-def test_includes_elements_fails_on_sub_set():
-    assert not includes_elements(foo='bar') == {'bob': 'barker'}
+def test_has_elements_fails_on_sub_set():
+    assert not has_elements(foo='bar') == {'bob': 'barker'}
 
 
 def test_same_elements_passes_on_identical_dict():

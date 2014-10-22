@@ -23,7 +23,7 @@ numbers:
 iterators/dictionaries:
 -------
 *   same_elements
-*   includes_elements
+*   has_elements
 
 objects:
 -------
@@ -38,10 +38,10 @@ Examples:
     startswith('abc') == 'abcdef'
     matches('^abc$') == 'abc'
 
-    includes_elements(1, 2, 3) == [1, 2, 3, 4, 5]
+    has_elements(1, 2, 3) == [1, 2, 3, 4, 5]
     same_elements(1, 2, 3) == [2, 3, 1]
 
-    includes_elements(foo='bar') == {
+    has_elements(foo='bar') == {
         'foo': 'bar',
         'bob': 'barker'
     }
