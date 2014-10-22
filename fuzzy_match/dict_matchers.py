@@ -1,5 +1,6 @@
 class Matcher(object):
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.args = args
         self.kwargs = kwargs
 
 
@@ -11,8 +12,9 @@ class Includes(Matcher):
         return True
 
 
-class SameElements(Includes):
+class HasKeys(Matcher):
     def __eq__(self, value):
-        if not len(value) == len(self.kwargs):
-            return False
-        return super(SameElements, self).__eq__(value)
+        for i in self.args:
+            if i not in value:
+                return False
+        return True
