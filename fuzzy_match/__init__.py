@@ -9,8 +9,7 @@ from delegators import has_elements  # noqa
 from object_matchers import MatchAnything
 from object_matchers import MatchAnythingTruthy
 from object_matchers import MatchAnythingFalsey
-from object_matchers import MatchHasAttrs as has_attrs  # noqa
-from object_matchers import MatchAnyInstanceOf as any_instance  # noqa
+from object_matchers import MatchAnyInstanceOf as instance_of  # noqa
 
 from number_matchers import LessThan as less_than  # noqa
 from number_matchers import LessThanOrEqual as less_than_or_equal  # noqa

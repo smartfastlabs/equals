@@ -4,8 +4,7 @@ from fuzzy_match import (
     anything,
     anything_true,
     anything_false,
-    any_instance,
-    has_attrs,
+    instance_of,
 )
 
 Dummy = namedtuple('Dummy', ['foo', 'bob'])
@@ -40,27 +39,29 @@ class TestAnythingFalse(object):
 
 class TestAnyInstance(object):
     def test_equals_same_type(self):
-        assert any_instance(dict) == {}
+        assert instance_of(dict) == {}
 
     def test_equals_same_type_with_multiple_types(self):
-        assert any_instance(dict, tuple) == (1, 2)
+        assert instance_of(dict, tuple) == (1, 2)
 
 
-class TestHasAttrs(object):
+class TestWithAttrs(object):
     def test_equals_instance_with_all_attrs(self):
-        assert has_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
+        matcher = anything.with_attrs(foo='bar', bob='barker')
+        assert matcher == Dummy('bar', 'barker')
 
     def test_does_not_equal_instance_with_all_attrs_but_diff_values(self):
-        assert not has_attrs(foo='bar', bob='bar') == Dummy('bar', 'barker')
+        matcher = anything.with_attrs(foo='bar', bob='bar')
+        assert not matcher == Dummy('bar', 'barker')
 
     def test_does_not_equal_instance_without_all_attrs(self):
-        matcher = has_attrs(foo='bar', cat='barker')
+        matcher = anything.with_attrs(foo='bar', cat='barker')
         assert not matcher == Dummy('bar', 'barker')
 
     def test_equals_instance_of_correct_type(self):
-        matcher = has_attrs(Dummy, foo='bar', bob='barker')
+        matcher = instance_of(Dummy).with_attrs(foo='bar', bob='barker')
         assert matcher == Dummy('bar', 'barker')
 
     def test_does_not_equal_instance_of_wrong_type(self):
-        matcher = has_attrs(dict, foo='bar', bob='barker')
+        matcher = instance_of(dict).with_attrs(foo='bar', bob='barker')
         assert not matcher == Dummy('bar', 'barker')

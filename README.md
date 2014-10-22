@@ -30,6 +30,7 @@ objects:
 *   anything
 *   anything_true
 *   anything_false
+*   instance_of
 
 
 Examples:
@@ -49,15 +50,14 @@ Examples:
     anything == None
     anything == True
     anything == {1: 1}
-    any_instance(dict) == {}
+    instance_of(dict) == {}
+    anything.with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
+    instance_of(Dummy).with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
 
     less_than(5) == 4
     greater_than(4) == 5
     between(1, 3) == 2
     plus_or_minus(10, 1) == 10.5
-
-    has_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
-    has_attrs(Dummy, foo='bar', bob='barker') == Dummy('bar', 'barker')
 
 
 License:

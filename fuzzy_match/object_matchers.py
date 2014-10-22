@@ -1,7 +1,13 @@
 class Matcher(object):
     def __init__(self, *args, **kwargs):
-        self.args = args
-        self.kwargs = kwargs
+        self.instance_types = args
+        self.instance_attrs = kwargs
+
+    def with_attrs(self, **kwargs):
+        return MatchHasAttrs(
+            *self.instance_types,
+            **kwargs
+        )
 
 
 class MatchAnything(Matcher):
@@ -21,19 +27,15 @@ class MatchAnythingFalsey(Matcher):
 
 class MatchAnyInstanceOf(Matcher):
     def __eq__(self, value):
-        return isinstance(value, self.args)
+        return isinstance(value, self.instance_types)
 
 
 class MatchHasAttrs(Matcher):
-    def __init__(self, instance_type=None, **kwargs):
-        self.instance_type = instance_type
-        self.expected_attrs = kwargs
-
     def __eq__(self, value):
         if self._wrong_type(value):
             return False
 
-        for k, v in self.expected_attrs.items():
+        for k, v in self.instance_attrs.items():
             if not hasattr(value, k):
                 return False
             if getattr(value, k) != v:
@@ -42,7 +44,7 @@ class MatchHasAttrs(Matcher):
         return True
 
     def _wrong_type(self, value):
-        if not self.instance_type:
+        if not self.instance_types:
             return False
 
-        return not isinstance(value, self.instance_type)
+        return not isinstance(value, self.instance_types)
