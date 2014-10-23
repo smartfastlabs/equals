@@ -1,4 +1,4 @@
-from fuzzy_match import has_elements, has_keys
+from equals import has_elements, has_keys
 
 
 def test_has_elements_passes_on_super_set():

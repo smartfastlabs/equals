@@ -1,6 +1,6 @@
 from collections import namedtuple
 
-from fuzzy_match import (
+from equals import (
     anything,
     anything_true,
     anything_false,

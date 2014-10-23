@@ -1,4 +1,4 @@
-from fuzzy_match import contains, startswith, endswith, matches
+from equals import contains, startswith, endswith, matches
 
 
 def test_string_contains_substring():

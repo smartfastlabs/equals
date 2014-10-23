@@ -1,7 +1,7 @@
 from mock import Mock
 import pytest
 
-from fuzzy_match import instance_of
+from equals import instance_of
 
 
 def test_mock_assert_called_with_passes():

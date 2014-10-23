@@ -1,4 +1,4 @@
-from fuzzy_match import (
+from equals import (
     less_than,
     less_than_or_equal,
     greater_than,

@@ -4,7 +4,7 @@ test: clean lint
 
 .PHONY: lint
 lint:
-	@flake8 fuzzy_match test
+	@flake8 equals test
 
 .PHONY: clean
 clean:

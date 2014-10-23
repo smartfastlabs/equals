@@ -2,7 +2,7 @@ from doubles import expect, allow
 from doubles.exceptions import UnallowedMethodCallError
 import pytest
 
-from fuzzy_match import contains
+from equals import contains
 
 
 class TestClass(object):
