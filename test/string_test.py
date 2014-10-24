@@ -31,3 +31,7 @@ def test_string_matches_regex():
 
 def test_string_does_not_match_regex():
     assert not matches('^bc$') == 'abc'
+
+
+def test_order_of_test_does_not_matter():
+    assert '123 abc 456' == contains('abc')

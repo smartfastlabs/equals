@@ -19,3 +19,7 @@ def test_same_elements_fails_on_super_set():
 
 def test_same_elements_fails_on_sub_set():
     assert not same_elements(1, 2, 3) == [2, 3]
+
+
+def test_order_of_test_does_not_matter():
+    assert [1, 2, 3, 4, 5] == has_elements(1, 2, 3)

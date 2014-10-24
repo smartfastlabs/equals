@@ -17,6 +17,9 @@ class TestAnything(object):
     def test_equals_true(self):
         assert anything == True  # noqa
 
+    def test_order_of_test_does_not_matter(self):
+        assert True == anything  # noqa
+
 
 class TestAnythingTrue(object):
     def test_equals_true(self):
@@ -28,6 +31,9 @@ class TestAnythingTrue(object):
     def test_does_not_equal_false(self):
         assert not anything_true == False  # noqa
 
+    def test_order_of_test_does_not_matter(self):
+        assert not False == anything_true  # noqa
+
 
 class TestAnythingFalse(object):
     def test_equalsfalse(self):
@@ -36,6 +42,9 @@ class TestAnythingFalse(object):
     def test_does_not_equal_true(self):
         assert not anything_false == True  # noqa
 
+    def test_order_of_test_does_not_matter(self):
+        assert False == anything_false  # noqa
+
 
 class TestAnyInstance(object):
     def test_equals_same_type(self):
@@ -43,6 +52,9 @@ class TestAnyInstance(object):
 
     def test_equals_same_type_with_multiple_types(self):
         assert instance_of(dict, tuple) == (1, 2)
+
+    def test_order_of_test_does_not_matter(self):
+        assert object() == instance_of(object)
 
 
 class TestWithAttrs(object):
@@ -65,3 +77,7 @@ class TestWithAttrs(object):
     def test_does_not_equal_instance_of_wrong_type(self):
         matcher = instance_of(dict).with_attrs(foo='bar', bob='barker')
         assert not matcher == Dummy('bar', 'barker')
+
+    def test_order_of_test_does_not_matter(self):
+        matcher = anything.with_attrs(foo='bar', bob='barker')
+        assert Dummy('bar', 'barker') == matcher

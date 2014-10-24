@@ -18,6 +18,9 @@ class TestLessThan(object):
     def test_does_not_equal_larger_number(self):
         assert not less_than(5) == 6
 
+    def test_order_of_test_does_not_matter(self):
+        assert 4 == less_than(5)
+
 
 class TestGreateThan(object):
     def test_equals_a_larger_number(self):
@@ -28,6 +31,9 @@ class TestGreateThan(object):
 
     def test_does_not_equal_smaller_number(self):
         assert not greater_than(5) == 4
+
+    def test_order_of_test_does_not_matter(self):
+        assert 6 == greater_than(5)
 
 
 class TestLessThanOrEqual(object):
@@ -40,6 +46,9 @@ class TestLessThanOrEqual(object):
     def test_does_not_equal_larger_number(self):
         assert not less_than_or_equal(5) == 6
 
+    def test_order_of_test_does_not_matter(self):
+        assert 4 == less_than_or_equal(5)
+
 
 class TestGreateThanOrEqual(object):
     def test_equals_a_larger_number(self):
@@ -50,6 +59,9 @@ class TestGreateThanOrEqual(object):
 
     def test_does_not_equal_smaller_number(self):
         assert not greater_than_or_equal(5) == 4
+
+    def test_order_of_test_does_not_matter(self):
+        assert 6 == greater_than_or_equal(5)
 
 
 class TestBetween(object):
@@ -68,6 +80,9 @@ class TestBetween(object):
     def test_does_not_equal_value_equal_to_min(self):
         assert not between(1, 3) == 1
 
+    def test_order_of_test_does_not_matter(self):
+        assert 2 == between(1, 3)
+
 
 class TestPlusOrMinus(object):
     def test_equals_value_within_range(self):
@@ -75,3 +90,6 @@ class TestPlusOrMinus(object):
 
     def test_does_not_eqaul_value_out_of_range(self):
         assert not plus_or_minus(10, 1) == 11.5
+
+    def test_order_of_test_does_not_matter(self):
+        assert 10.5 == plus_or_minus(10, 1)

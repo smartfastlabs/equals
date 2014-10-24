@@ -29,3 +29,7 @@ def hest_has_keys_passes_on_dict_with_extra_keys():
 
 def test_has_fails_on_dict_with_missing_keys():
     assert not has_keys('foo', 'bob') == {'bob': 'barker'}
+
+
+def test_order_of_test_does_not_matter():
+    assert {'foo': 'bar'} == has_elements(foo='bar')
