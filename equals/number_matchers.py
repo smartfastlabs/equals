@@ -1,34 +1,37 @@
-class ValueMatcher(object):
+from base_matcher import BaseMatcher
+
+
+class NumberMatcher(BaseMatcher):
     def __init__(self, value):
         self.value = value
 
 
-class LessThan(ValueMatcher):
-    def __eq__(self, value):
+class LessThan(NumberMatcher):
+    def _check(self, value):
         return value < self.value
 
 
-class LessThanOrEqual(ValueMatcher):
-    def __eq__(self, value):
+class LessThanOrEqual(NumberMatcher):
+    def _check(self, value):
         return value <= self.value
 
 
-class GreaterThan(ValueMatcher):
-    def __eq__(self, value):
+class GreaterThan(NumberMatcher):
+    def _check(self, value):
         return value > self.value
 
 
-class GreaterThanOrEqual(ValueMatcher):
-    def __eq__(self, value):
+class GreaterThanOrEqual(NumberMatcher):
+    def _check(self, value):
         return value >= self.value
 
 
-class WithinRange(object):
+class WithinRange(NumberMatcher):
     def __init__(self, min_val, max_val):
         self.min_val = min_val
         self.max_val = max_val
 
-    def __eq__(self, value):
+    def _check(self, value):
         return self.min_val < value < self.max_val
 
 

@@ -1,10 +1,12 @@
-class Matcher(object):
-    def __init__(self, *args):
-        self.args = args
+from base_matcher import BaseMatcher
 
 
-class Includes(Matcher):
-    def __eq__(self, value):
+class IteratorMatcher(BaseMatcher):
+    pass
+
+
+class Includes(IteratorMatcher):
+    def _check(self, value):
         for v in self.args:
             if v not in value:
                 return False
@@ -12,7 +14,7 @@ class Includes(Matcher):
 
 
 class SameElements(Includes):
-    def __eq__(self, value):
+    def _check(self, value):
         if not len(value) == len(self.args):
             return False
-        return super(SameElements, self).__eq__(value)
+        return super(SameElements, self)._check(value)

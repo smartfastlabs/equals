@@ -1,41 +1,41 @@
-class Matcher(object):
-    def __init__(self, *args, **kwargs):
-        self.instance_types = args
-        self.instance_attrs = kwargs
+from base_matcher import BaseMatcher
+
+
+class Matcher(BaseMatcher):
 
     def with_attrs(self, **kwargs):
         return MatchHasAttrs(
-            *self.instance_types,
+            *self.args,
             **kwargs
         )
 
 
 class MatchAnything(Matcher):
-    def __eq__(self, value):
+    def _check(self, value):
         return True
 
 
 class MatchAnythingTruthy(Matcher):
-    def __eq__(self, value):
+    def _check(self, value):
         return bool(value)
 
 
 class MatchAnythingFalsey(Matcher):
-    def __eq__(self, value):
+    def _check(self, value):
         return not bool(value)
 
 
 class MatchAnyInstanceOf(Matcher):
-    def __eq__(self, value):
-        return isinstance(value, self.instance_types)
+    def _check(self, value):
+        return isinstance(value, self.args)
 
 
 class MatchHasAttrs(Matcher):
-    def __eq__(self, value):
+    def _check(self, value):
         if self._wrong_type(value):
             return False
 
-        for k, v in self.instance_attrs.items():
+        for k, v in self.kwargs.items():
             if not hasattr(value, k):
                 return False
             if getattr(value, k) != v:
@@ -44,7 +44,7 @@ class MatchHasAttrs(Matcher):
         return True
 
     def _wrong_type(self, value):
-        if not self.instance_types:
+        if not self.args:
             return False
 
-        return not isinstance(value, self.instance_types)
+        return not isinstance(value, self.args)
