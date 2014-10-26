@@ -18,60 +18,60 @@ def constraint(func):
 class Constraints(object):
     @constraint
     def containing(self):
-        from iter_matchers import Containing
+        from containing import Containing
         return Containing
 
     @constraint
     def not_containing(self):
-        from iter_matchers import NotContaining
+        from not_containing import NotContaining
         return NotContaining
 
     @constraint
-    def matching(self):
-        from string_matchers import RegexMatcher
-        return RegexMatcher
-
-    @constraint
     def containing_only(self):
-        from iter_matchers import ContainingOnly
+        from containing_only import ContainingOnly
         return ContainingOnly
 
     @constraint
+    def matching(self):
+        from strings.regex import Regex
+        return Regex
+
+    @constraint
     def starting_with(self):
-        from string_matchers import StartsWithMatcher
-        return StartsWithMatcher
+        from strings.startswith import StartsWith
+        return StartsWith
 
     @constraint
     def ending_with(self):
-        from string_matchers import EndsWithMatcher
-        return EndsWithMatcher
+        from strings.endswith import EndsWith
+        return EndsWith
 
     @constraint
     def with_attrs(self):
-        from object_matchers import HasAttrs
-        return HasAttrs
+        from with_attrs import WithAttrs
+        return WithAttrs
 
     @constraint
     def greater_than(self):
-        from number_matchers import GreaterThan
+        from numbers.greater_than import GreaterThan
         return GreaterThan
 
     @constraint
     def greater_than_or_equal_to(self):
-        from number_matchers import GreaterThanOrEqual
+        from numbers.greater_than_or_equal import GreaterThanOrEqual
         return GreaterThanOrEqual
 
     @constraint
     def less_than(self):
-        from number_matchers import LessThan
+        from numbers.less_than import LessThan
         return LessThan
 
     @constraint
     def less_than_or_equal_to(self):
-        from number_matchers import LessThanOrEqual
+        from numbers.less_than_or_equal import LessThanOrEqual
         return LessThanOrEqual
 
     @constraint
     def between(self):
-        from number_matchers import Between
+        from numbers.between import Between
         return Between

@@ -1,7 +1,7 @@
-from constraints import Constraints
+from equals.constraints import Constraints
 
 
-class BaseMatcher(Constraints):
+class Base(Constraints):
     def __init__(self, parent, *args, **kwargs):
         self._parent = parent
         self.args = args
@@ -26,7 +26,7 @@ class BaseMatcher(Constraints):
         return '<Equals {}>'.format(str(self))
 
     def __str__(self):
-        join_string = ' and ' if isinstance(self._parent, BaseMatcher) else ' '
+        join_string = ' and ' if isinstance(self._parent, Base) else ' '
         return '{parent}{join_string}{description}'.format(
             parent=self._parent,
             description=self.description,

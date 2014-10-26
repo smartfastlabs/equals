@@ -1,9 +1,9 @@
 import numbers
 import collections
 
-from instance_of import InstanceOf as instance_of
-from object_matchers import AnythingTruthy
-from object_matchers import AnythingFalsey
+from equals import Equals as instance_of
+from constraints.anything_true import AnythingTrue
+from constraints.anything_false import AnythingFalse
 
 anything = instance_of()
 any_string = instance_of(basestring)
@@ -14,5 +14,5 @@ any_iterable = instance_of(collections.Iterable)
 any_dict = instance_of(dict)
 any_list = instance_of(list)
 any_tuple = instance_of(tuple)
-anything_false = AnythingFalsey(anything)
-anything_true = AnythingTruthy(anything)
+anything_false = AnythingFalse(anything)
+anything_true = AnythingTrue(anything)

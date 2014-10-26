@@ -6,7 +6,7 @@ def _stringify_types(types):
     return ' or '.join(types)
 
 
-class InstanceOf(Constraints):
+class Equals(Constraints):
     _types = None
     _parent = None
 
