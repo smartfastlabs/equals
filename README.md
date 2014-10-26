@@ -18,11 +18,10 @@ numbers:
     any_number.greater_than(4) == 5
     any_number.greater_than_or_equal(5) == 5
     any_number.between(1, 3) == 2
-    any_number.plus_or_minus(10, 1) == 10.5
 
 dictionaries:
 -------
-    any_dict.with_keys(1, 2) == {1: 2, 2:3, 4:5}
+    any_dict.containing(1, 2) == {1: 2, 2:3, 4:5}
     any_dict.containing(foo='bar') == {
         'foo': 'bar',
         'bob': 'barker'

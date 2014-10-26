@@ -73,15 +73,5 @@ class Constraints(object):
 
     @constraint
     def between(self):
-        from number_matchers import WithinRange
-        return WithinRange
-
-    @constraint
-    def plus_or_minus(self):
-        from number_matchers import PlusOrMinus
-        return PlusOrMinus
-
-    @constraint
-    def with_keys(self):
-        from dict_matchers import HasKeys
-        return HasKeys
+        from number_matchers import Between
+        return Between

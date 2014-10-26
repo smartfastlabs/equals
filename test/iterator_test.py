@@ -1,32 +1,61 @@
 from equals import any_iterable
 
 
-def test_containing_passes_on_super_set():
-    assert any_iterable.containing(1, 2, 3) == [1, 2, 3, 4, 5]
+class TestContaining(object):
+    test_obj = any_iterable.containing(1, 2, 3)
+
+    def test_passes_on_super_set(self):
+        assert self.test_obj == [1, 2, 3, 4, 5]
+
+    def test_fails_on_sub_set(self):
+        assert not self.test_obj == [2, 3, 4, 5]
+
+    def test_representation(self):
+        expected = (
+            "Any instance of <class '_abcoll.Iterable'> "
+            "containing: 1, 2, 3"
+        )
+        assert str(self.test_obj) == expected
+        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
 
 
-def test_containing_fails_on_sub_set():
-    assert not any_iterable.containing(1, 2, 3) == [2, 3, 4, 5]
+class TestNotContaining(object):
+    test_obj = any_iterable.not_containing(1, 2, 3)
+
+    def test_passes_if_value_is_not_found(self):
+        assert self.test_obj == [4, 5]
+
+    def test_fails_if_value_is_found(self):
+        assert not self.test_obj == [1, 2, 3, 4, 5]
+
+    def test_representation(self):
+        expected = (
+            "Any instance of <class '_abcoll.Iterable'> "
+            "not containing: 1, 2, 3"
+        )
+        assert str(self.test_obj) == expected
+        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
 
 
-def test_not_containing_passes_if_value_is_not_found():
-    assert any_iterable.not_containing(1, 2, 3) == [4, 5]
+class TestContainingOnly(object):
+    test_obj = any_iterable.containing_only(1, 2, 3)
 
+    def test_containing_only_passes_on_identical_list(self):
+        assert self.test_obj == [1, 2, 3]
 
-def test_not_containing_fails_if_value_is_found():
-    assert not any_iterable.not_containing(1, 2, 3) == [1, 2, 3, 4, 5]
+    def test_containing_only_fails_on_super_set(self):
+        assert not self.test_obj == [1, 2, 3, 4]
 
+    def test_containing_only_fails_on_sub_set(self):
+        assert not self.test_obj == [2, 3]
 
-def test_containing_only_passes_on_identical_list():
-    assert any_iterable.containing_only(1, 2, 3) == [1, 2, 3]
-
-
-def test_containing_only_fails_on_super_set():
-    assert not any_iterable.containing_only(1, 2, 3) == [1, 2, 3, 4]
-
-
-def test_containing_only_fails_on_sub_set():
-    assert not any_iterable.containing_only(1, 2, 3) == [2, 3]
+    def test_representation(self):
+        expected = (
+            "Any instance of <class '_abcoll.Iterable'> "
+            "containing only: 1, 2, 3"
+        )
+        assert str(self.test_obj) == expected
+        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
 
 
 def test_order_of_test_does_not_matter():

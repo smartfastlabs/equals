@@ -2,6 +2,8 @@ from base_matcher import BaseMatcher
 
 
 class Containing(BaseMatcher):
+    _description = 'containing: {}'
+
     def _check(self, value):
         # This will check list like objects
         for v in self.args:
@@ -16,6 +18,8 @@ class Containing(BaseMatcher):
 
 
 class NotContaining(Containing):
+    _description = 'not containing: {}'
+
     def _check(self, value):
         # This will check list like objects
         for v in self.args:
@@ -30,6 +34,8 @@ class NotContaining(Containing):
 
 
 class ContainingOnly(Containing):
+    _description = 'containing only: {}'
+
     def _check(self, value):
         if not len(value) == len(self.args):
             return False

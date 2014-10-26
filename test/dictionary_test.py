@@ -1,34 +1,42 @@
 from equals import any_dict
 
 
-def test_has_elements_passes_on_super_set():
-    assert any_dict.containing(foo='bar') == {
-        'foo': 'bar',
-        'bob': 'barker',
-    }
+class TestContainingItems(object):
+    test_obj = any_dict.containing(foo='bar')
+
+    def test_passes_on_super_set(self):
+        assert self.test_obj == {
+            'foo': 'bar',
+            'bob': 'barker',
+        }
+
+    def test_fails_on_sub_set(self):
+        assert not self.test_obj == {'bob': 'barker'}
+
+    def test_representation(self):
+        expected = "Any instance of <type 'dict'> containing: foo=bar"
+        assert str(self.test_obj) == expected
+        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
 
 
-def test_has_elements_fails_on_sub_set():
-    assert not any_dict.containing(foo='bar') == {'bob': 'barker'}
+class TestContainingKeys(object):
+    test_obj = any_dict.containing('foo', 'bob')
 
+    def test_passes_on_dict_with_exact_keys(self):
+        assert self.test_obj == {
+            'foo': 'bar',
+            'bob': 'barker',
+        }
 
-def hest_has_keys_passes_on_dict_with_exact_keys():
-    assert any_dict.containing('foo', 'bob') == {
-        'foo': 'bar',
-        'bob': 'barker',
-    }
+    def test_passes_on_dict_with_extra_keys(self):
+        assert self.test_obj == {
+            'foo': 'bar',
+            'bob': 'barker',
+            'ricky': 'bobby',
+        }
 
-
-def hest_has_keys_passes_on_dict_with_extra_keys():
-    assert any_dict.containing('foo', 'bob') == {
-        'foo': 'bar',
-        'bob': 'barker',
-        'ricky': 'bobby',
-    }
-
-
-def test_has_fails_on_dict_with_missing_keys():
-    assert not any_dict.with_keys('foo', 'bob') == {'bob': 'barker'}
+    def test_fails_on_dict_with_missing_keys(self):
+        assert not self.test_obj == {'bob': 'barker'}
 
 
 def test_order_of_test_does_not_matter():
