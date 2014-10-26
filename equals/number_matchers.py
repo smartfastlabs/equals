@@ -2,7 +2,7 @@ from base_matcher import BaseMatcher
 
 
 class NumberMatcher(BaseMatcher):
-    def __init__(self, value):
+    def _handle_args(self, value):
         self.value = value
 
 
@@ -27,7 +27,7 @@ class GreaterThanOrEqual(NumberMatcher):
 
 
 class WithinRange(NumberMatcher):
-    def __init__(self, min_val, max_val):
+    def _handle_args(self, min_val, max_val):
         self.min_val = min_val
         self.max_val = max_val
 
@@ -36,8 +36,8 @@ class WithinRange(NumberMatcher):
 
 
 class PlusOrMinus(WithinRange):
-    def __init__(self, value, error):
-        super(PlusOrMinus, self).__init__(
+    def _handle_args(self, value, error):
+        super(PlusOrMinus, self)._handle_args(
             value - error,
             value + error,
         )

@@ -4,25 +4,20 @@ from base_matcher import BaseMatcher
 
 
 class StringMatcher(BaseMatcher):
-    def __init__(self, value):
+    def _handle_args(self, value):
         self.value = value
 
 
-class StringContainsMatcher(StringMatcher):
-    def _check(self, value):
-        return self.value in value
-
-
-class StringStartsWithMatcher(StringMatcher):
+class StartsWithMatcher(StringMatcher):
     def _check(self, value):
         return value.startswith(self.value)
 
 
-class StringEndsWithMatcher(StringMatcher):
+class EndsWithMatcher(StringMatcher):
     def _check(self, value):
         return value.endswith(self.value)
 
 
-class StringRegexMatcher(StringMatcher):
+class RegexMatcher(StringMatcher):
     def _check(self, value):
         return bool(re.search(self.value, value))
