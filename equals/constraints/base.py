@@ -20,7 +20,8 @@ class Base(Constraints):
         return not self == value
 
     def _handle_args(self, *args, **kwargs):
-        pass
+        if args:
+            self.value = args[0]
 
     def __repr__(self):
         return '<Equals {}>'.format(str(self))

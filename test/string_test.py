@@ -1,3 +1,5 @@
+import re
+
 from equals import any_string
 
 
@@ -11,9 +13,12 @@ class TestContaining(object):
         assert not self.test_obj == '123 ac 456'
 
     def test_representation(self):
-        expected = "Any instance of <type 'basestring'> containing: abc"
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        expected = (
+            r"Any instance of <(type|class) '(basestring|str)'> "
+            r"containing: abc"
+        )
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 class TestStartingWith(object):
@@ -26,9 +31,12 @@ class TestStartingWith(object):
         assert not self.test_obj == 'bcdef'
 
     def test_representation(self):
-        expected = "Any instance of <type 'basestring'> starting with abc"
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        expected = (
+            "Any instance of <(type|class) '(basestring|str)'> "
+            "starting with abc"
+        )
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 class TestEndingWith(object):
@@ -41,9 +49,12 @@ class TestEndingWith(object):
         assert not self.test_obj == '123ab'
 
     def test_representation(self):
-        expected = "Any instance of <type 'basestring'> ending with abc"
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        expected = (
+            "Any instance of <(type|class) '(basestring|str)'> "
+            "ending with abc"
+        )
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 class TestMatching(object):
@@ -56,9 +67,12 @@ class TestMatching(object):
         assert not self.test_obj == 'ac'
 
     def test_representation(self):
-        expected = "Any instance of <type 'basestring'> matching ^abc$"
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        expected = (
+            "Any instance of <(type|class) '(basestring|str)'> "
+            "matching \^abc\$"
+        )
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 class TestNoConstraints(object):
@@ -69,9 +83,9 @@ class TestNoConstraints(object):
         assert not any_string == 1
 
     def test_representation(self):
-        expected = "Any instance of <type 'basestring'>"
-        assert str(any_string) == expected
-        assert repr(any_string) == '<Equals {}>'.format(expected)
+        expected = "Any instance of <(type|class) '(basestring|str)'>"
+        assert re.match(expected, str(any_string))
+        assert re.match('<Equals {}>'.format(expected), repr(any_string))
 
 
 def test_order_of_test_does_not_matter():

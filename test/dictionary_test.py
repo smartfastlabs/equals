@@ -1,3 +1,5 @@
+import re
+
 from equals import any_dict
 
 
@@ -14,9 +16,9 @@ class TestContainingItems(object):
         assert not self.test_obj == {'bob': 'barker'}
 
     def test_representation(self):
-        expected = "Any instance of <type 'dict'> containing: foo=bar"
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        expected = "Any instance of <(type|class) 'dict'> containing: foo=bar"
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 class TestContainingKeys(object):

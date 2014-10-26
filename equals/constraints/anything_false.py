@@ -1,4 +1,4 @@
-from base import Base
+from equals.constraints.base import Base
 
 
 class AnythingFalse(Base):

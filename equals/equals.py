@@ -1,4 +1,6 @@
-from constraints import Constraints
+from __future__ import absolute_import
+
+from equals.constraints import Constraints
 
 
 def _stringify_types(types):

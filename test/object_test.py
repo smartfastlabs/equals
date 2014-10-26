@@ -1,4 +1,5 @@
 from collections import namedtuple
+import re
 
 from equals import (
     anything,
@@ -73,8 +74,9 @@ class TestAnyInstance(object):
 
     def test_representation(self):
         test_obj = instance_of(dict)
-        assert repr(test_obj) == "<Equals Any instance of <type 'dict'>>"
-        assert str(test_obj) == "Any instance of <type 'dict'>"
+        expected = r"Any instance of <(type|class) 'dict'>"
+        assert re.match(expected, str(test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(test_obj))
 
 
 class TestWithAttrs(object):

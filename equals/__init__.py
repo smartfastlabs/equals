@@ -1,12 +1,17 @@
+from __future__ import absolute_import
+
 import numbers
 import collections
 
-from equals import Equals as instance_of
-from constraints.anything_true import AnythingTrue
-from constraints.anything_false import AnythingFalse
+from equals.equals import Equals as instance_of
+from equals.constraints.anything_true import AnythingTrue
+from equals.constraints.anything_false import AnythingFalse
 
 anything = instance_of()
-any_string = instance_of(basestring)
+try:
+    any_string = instance_of(basestring)
+except NameError:
+    any_string = instance_of(str)
 any_number = instance_of(numbers.Number)
 any_int = instance_of(int)
 any_float = instance_of(float)

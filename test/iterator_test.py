@@ -1,3 +1,5 @@
+import re
+
 from equals import any_iterable
 
 
@@ -12,11 +14,11 @@ class TestContaining(object):
 
     def test_representation(self):
         expected = (
-            "Any instance of <class '_abcoll.Iterable'> "
+            "Any instance of <class '.*Iterable'> "
             "containing: 1, 2, 3"
         )
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 class TestNotContaining(object):
@@ -30,11 +32,11 @@ class TestNotContaining(object):
 
     def test_representation(self):
         expected = (
-            "Any instance of <class '_abcoll.Iterable'> "
+            "Any instance of <class '.*Iterable'> "
             "not containing: 1, 2, 3"
         )
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 class TestContainingOnly(object):
@@ -51,11 +53,11 @@ class TestContainingOnly(object):
 
     def test_representation(self):
         expected = (
-            "Any instance of <class '_abcoll.Iterable'> "
+            "Any instance of <class '.*Iterable'> "
             "containing only: 1, 2, 3"
         )
-        assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
 
 
 def test_order_of_test_does_not_matter():

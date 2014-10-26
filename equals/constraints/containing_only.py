@@ -1,4 +1,4 @@
-from containing import Containing
+from equals.constraints.containing import Containing
 
 
 class ContainingOnly(Containing):
