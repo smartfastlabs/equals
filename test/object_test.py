@@ -20,6 +20,9 @@ class TestAnything(object):
     def test_order_of_test_does_not_matter(self):
         assert True == anything  # noqa
 
+    def test_with_constraint_unsupported_type(self):
+        assert not anything.containing(1) == 1
+
     def test_representation(self):
         assert repr(anything) == '<Equals Any object>'
         assert str(anything) == 'Any object'
