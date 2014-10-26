@@ -41,8 +41,9 @@ class Base(Constraints):
                 [str(x) for x in self.args],
             )
         elif self.kwargs:
+            kwargs = sorted(self.kwargs.items())
             params = ', '.join(
-                ['{}={}'.format(*x) for x in self.kwargs.items()],
+                ['{}={}'.format(*x) for x in kwargs],
             )
         else:
             params = ''
