@@ -3,7 +3,9 @@ A mock equality tool for testing
 
 [![Travis Test Status](https://travis-ci.org/toddsifleet/equals.svg?branch=master)](https://travis-ci.org/toddsifleet/equals)
 
-equals allows you to assert certain equality constraints between python objects during testing.  There are times where we don't want to assert absolute equality, e.g. we need to ensure two lists have the same elements, but don't care about order.  Equals is a stricter version of [Mock.Any](http://www.voidspace.org.uk/python/mock/helpers.html#any).
+tl;dr Equals is a stricter version of [Mock.Any](http://www.voidspace.org.uk/python/mock/helpers.html#any).
+
+Equals allows you to assert certain equality constraints between python objects during testing.  There are times where we don't want to assert absolute equality, e.g. we need to ensure two lists have the same elements, but don't care about order.
 
 strings:
 -------
@@ -64,6 +66,14 @@ Installation:
 -------
     >> pip install equals
 
+
+Development:
+-------
+
+    >> git clone https://github.com/toddsifleet/equals
+    >> cd equals
+    >> make bootstrap
+    >> make
 
 License:
 -------
