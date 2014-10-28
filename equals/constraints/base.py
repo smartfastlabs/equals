@@ -36,15 +36,15 @@ class Base(Constraints):
 
     @property
     def description(self):
+        constraints = []
         if self.args:
-            params = ', '.join(
+            constraints = [', '.join(
                 [str(x) for x in self.args],
-            )
-        elif self.kwargs:
+            )]
+        if self.kwargs:
             kwargs = sorted(self.kwargs.items())
-            params = ', '.join(
+            constraints.append(', '.join(
                 ['{}={}'.format(*x) for x in kwargs],
-            )
-        else:
-            params = ''
+            ))
+        params = ' and '.join(constraints)
         return self._description.format(params)
