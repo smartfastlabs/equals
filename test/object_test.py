@@ -102,10 +102,27 @@ class TestWithAttrs(object):
     def test_order_of_test_does_not_matter(self):
         assert Dummy('bar', 'barker') == self.test_obj
 
+    def test_passes_with_correct_args_and_kwargs(self):
+        test_obj = anything.with_attrs('foo', bob='barker')
+        assert Dummy('bar', 'barker') == test_obj
+
+    def test_fails_with_incorrect_args_and_kwargs(self):
+        test_obj = anything.with_attrs('bar', bob='barker')
+        assert Dummy('bar', 'barker') != test_obj
+
     def test_representation(self):
         assert repr(self.test_obj) == (
             "<Equals Any object with attrs: bob=barker, foo=bar>"
         )
         assert str(self.test_obj) == (
             "Any object with attrs: bob=barker, foo=bar"
+        )
+
+    def test_representation_args_and_kwargs(self):
+        test_obj = anything.with_attrs('bar', bob='barker')
+        assert repr(test_obj) == (
+            "<Equals Any object with attrs: bar and bob=barker>"
+        )
+        assert str(test_obj) == (
+            "Any object with attrs: bar and bob=barker"
         )
