@@ -1,6 +1,7 @@
 A mock equality tool for testing
 ================================
 
+|PyPi Version|
 |Travis Test Status|
 
 tl;dr Equals is a stricter version of
@@ -109,3 +110,6 @@ See LICENSE
 
 .. |Travis Test Status| image:: https://travis-ci.org/toddsifleet/equals.svg?branch=master
    :target: https://travis-ci.org/toddsifleet/equals
+
+.. |PyPi Version| image:: https://badge.fury.io/py/equals.svg
+   :target: http://badge.fury.io/py/equals
