@@ -1,4 +1,4 @@
-from equals.constraints import Constraints
+from . import Constraints
 
 
 class Base(Constraints):

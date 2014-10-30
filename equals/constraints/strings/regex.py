@@ -1,6 +1,6 @@
 import re
 
-from equals.constraints.base import Base
+from ..base import Base
 
 
 class Regex(Base):
