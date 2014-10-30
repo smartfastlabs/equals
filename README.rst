@@ -10,7 +10,29 @@ tl;dr Equals is a stricter version of
 Equals allows you to assert certain equality constraints between python
 objects during testing. There are times where we don't want to assert
 absolute equality, e.g. we need to ensure two lists have the same
-elements, but don't care about order.
+elements, but don't care about order.  This was designed specifically for
+usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `doubles <https://github.com/uber/doubles>`_.
+
+
+Usage with Mock:
+----------------
+
+::
+
+    test_object = Mock()
+    test_object.method({'bob': 'barker'})
+    test_object.method.assert_called_with(any_dict)
+
+Usage with doubles:
+-------------------
+
+::
+
+    test_object = TestClass()
+    expect(test_object).method.with_args(any_string.containing('bob'))
+
+    test_object.method('bob barker')
+
 
 strings:
 --------
@@ -66,25 +88,6 @@ objects:
     instance_of(dict) == {}
     anything.with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
     instance_of(Dummy).with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
-
-Usage with Mock:
-----------------
-
-::
-
-    test_object = Mock()
-    test_object.method({'bob': 'barker'})
-    test_object.method.assert_called_with(any_dict)
-
-Usage with doubles:
--------------------
-
-::
-
-    test_object = TestClass()
-    expect(test_object).method.with_args(any_string.containing('bob'))
-
-    test_object.method('bob barker')
 
 Installation:
 -------------
