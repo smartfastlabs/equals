@@ -28,6 +28,9 @@ class TestAnything(object):
         assert repr(anything) == '<Equals Any object>'
         assert str(anything) == 'Any object'
 
+    def test_anything_equals_anything(self):
+        assert anything == anything
+
 
 class TestAnythingTrue(object):
     def test_equals_true(self):
