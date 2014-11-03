@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-__version__ = '0.0.2'
+__version__ = '0.0.21'
 
 import numbers
 import collections
