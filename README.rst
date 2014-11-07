@@ -51,9 +51,9 @@ numbers:
 ::
 
     any_number.less_than(5) == 4
-    any_number.less_than_or_equal(5) == 5
+    any_number.less_than_or_equal_to(5) == 5
     any_number.greater_than(4) == 5
-    any_number.greater_than_or_equal(5) == 5
+    any_number.greater_than_or_equal_to(5) == 5
     any_number.between(1, 3) == 2
 
 dictionaries:
@@ -73,9 +73,9 @@ iterators:
 
 ::
 
-    any_iter.containing(1, 2, 3) == [1, 2, 3, 4, 5]
-    any_iter.containing_only(1, 2, 3) == [2, 3, 1]
-    any_iter.not_containg(1, 2) == [3, 4]
+    any_iterable.containing(1, 2, 3) == [1, 2, 3, 4, 5]
+    any_iterable.containing_only(1, 2, 3) == [2, 3, 1]
+    any_iterable.not_containing(1, 2) == [3, 4]
 
 objects:
 --------
