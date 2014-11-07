@@ -66,6 +66,7 @@ dictionaries:
         'foo': 'bar',
         'bob': 'barker'
     }
+    any_dict.not_containing(1, foo=5) == {'foo':3, 4:5}
 
 iterators:
 ----------
@@ -74,6 +75,7 @@ iterators:
 
     any_iter.containing(1, 2, 3) == [1, 2, 3, 4, 5]
     any_iter.containing_only(1, 2, 3) == [2, 3, 1]
+    any_iter.not_containg(1, 2) == [3, 4]
 
 objects:
 --------
