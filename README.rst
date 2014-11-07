@@ -3,6 +3,7 @@ A mock equality tool for testing
 
 |PyPi Version|
 |Travis Test Status|
+|Coveralls|
 
 tl;dr Equals is a stricter version of
 `Mock.Any <http://www.voidspace.org.uk/python/mock/helpers.html#any>`__.
@@ -116,3 +117,6 @@ See LICENSE
 
 .. |PyPi Version| image:: https://badge.fury.io/py/equals.svg
    :target: http://badge.fury.io/py/equals
+
+.. |Coveralls| image:: https://img.shields.io/coveralls/toddsifleet/equals.svg
+   :target: https://coveralls.io/r/toddsifleet/equals  

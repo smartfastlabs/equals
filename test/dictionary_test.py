@@ -3,7 +3,31 @@ import re
 from equals import any_dict
 
 
-class TestContainingItems(object):
+class TestNotContaining(object):
+    test_obj = any_dict.not_containing('key1', key2='bar')
+
+    def test_passes_on_dict_not_containing_key_or_value(self):
+        assert self.test_obj == {
+            'foo': 'bar',
+            'bob': 'barker',
+        }
+
+    def test_failes_on_dict_containing_key(self):
+        assert not self.test_obj == {'key1': 'barker'}
+
+    def test_fails_on_dict_containing_value(self):
+        assert not self.test_obj == {'key2': 'bar'}
+
+    def test_passes_on_dict_with_key_but_wrong_value(self):
+        assert self.test_obj == {'key2': 'bob'}
+
+    def test_representation(self):
+        expected = "Any instance of <(type|class) 'dict'> not containing: key1 and key2=bar"
+        assert re.match(expected, str(self.test_obj))
+        assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
+
+
+class TestContaining(object):
     test_obj = any_dict.containing(foo='bar')
 
     def test_passes_on_super_set(self):
