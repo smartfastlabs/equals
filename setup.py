@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 import equals
 
@@ -10,7 +10,10 @@ setup(
     long_description=long_description,
     name='equals',
     version=equals.__version__,
-    author='Todd Siflet',
+    author='Todd Sifleet',
     author_email='todd.siflet@gmail.com',
-    py_modules = [],
+    packages=['equals'],
+    zip_safe=True,
+    license='MIT',
+    url='https://github.com/toddsifleet/equals',
 )
