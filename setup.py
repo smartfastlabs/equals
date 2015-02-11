@@ -12,7 +12,7 @@ setup(
     version=equals.__version__,
     author='Todd Sifleet',
     author_email='todd.siflet@gmail.com',
-    packages=['equals'],
+    packages=['equals', 'equals.constraints'],
     zip_safe=True,
     license='MIT',
     url='https://github.com/toddsifleet/equals',

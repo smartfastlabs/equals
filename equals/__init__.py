@@ -2,12 +2,13 @@ from __future__ import absolute_import
 
 __version__ = '0.0.22'
 
-import numbers
-import collections
+import numbers  # noqa
+import collections  # noqa
 
-from equals.equals import Equals as instance_of
-from equals.constraints.anything_true import AnythingTrue
-from equals.constraints.anything_false import AnythingFalse
+from equals.equals import Equals as instance_of  # noqa
+from equals.constraints.anything_true import AnythingTrue  # noqa
+from equals.constraints.anything_false import AnythingFalse  # noqa
+
 
 anything = instance_of()
 try:
