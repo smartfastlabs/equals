@@ -11,6 +11,14 @@ from equals import (
 Dummy = namedtuple('Dummy', ['foo', 'bob'])
 
 
+class NeverEquals(object):
+    def __init__(self, name):
+        self.name = name
+
+    def __eq__(self, other):
+        return False
+
+
 class TestAnything(object):
     def test_equals_none(self):
         assert anything == None  # noqa
@@ -129,3 +137,9 @@ class TestWithAttrs(object):
         assert str(test_obj) == (
             "Any object with attrs: bar and bob=barker"
         )
+
+    def test_poorly_implemented__eq__(self):
+        test_obj = instance_of(NeverEquals).with_attrs(
+            name="Bob Barker",
+        )
+        assert test_obj == NeverEquals("Bob Barker")
