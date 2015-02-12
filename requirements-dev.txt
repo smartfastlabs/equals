@@ -4,3 +4,4 @@ mock==1.0.1
 doubles==1.0.0
 coverage==3.7.1
 coveralls==0.4.2
+schematics==1.0-1

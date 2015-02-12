@@ -9,7 +9,7 @@ class Base(Constraints):
         self._handle_args(*args, **kwargs)
 
     def __eq__(self, value):
-        if value != self._parent:
+        if self._parent != value:
             return False
         try:
             return self._check(value)
