@@ -19,6 +19,11 @@ class NeverEquals(object):
         return False
 
 
+class EqualsNotImplemented(NeverEquals):
+    def __eq__(self, other):
+        return NotImplemented
+
+
 class TestAnything(object):
     def test_equals_none(self):
         assert anything == None  # noqa
@@ -143,3 +148,15 @@ class TestWithAttrs(object):
             name="Bob Barker",
         )
         assert test_obj == NeverEquals("Bob Barker")
+
+    def test__eq__that_returns_not_implemented(self):
+        test_obj = instance_of(EqualsNotImplemented).with_attrs(
+            name="Bob Barker",
+        )
+        assert EqualsNotImplemented("Bob Barker") == test_obj
+
+    def test__eq__that_returns_not_implemented_two(self):
+        test_obj = instance_of(EqualsNotImplemented).with_attrs(
+            name="Bob Barker",
+        )
+        assert test_obj == EqualsNotImplemented("Bob Barker")
