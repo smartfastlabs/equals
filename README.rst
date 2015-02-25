@@ -40,6 +40,8 @@ strings:
 
 ::
 
+    from equals import any_string
+
     any_string.containing('abc') == '123 abc 456'
     any_string.starting_with('abc') == 'abcdef'
     any_string.ending_with('abc') == '123abc'
@@ -49,6 +51,8 @@ numbers:
 --------
 
 ::
+
+    from equals import any_number
 
     any_number.less_than(5) == 4
     any_number.less_than_or_equal_to(5) == 5
@@ -60,6 +64,8 @@ dictionaries:
 -------------
 
 ::
+
+    from equals import any_dict
 
     any_dict.containing(1, 2) == {1: 2, 2:3, 4:5}
     any_dict.containing(foo='bar') == {
@@ -73,6 +79,8 @@ iterators:
 
 ::
 
+    from equals import any_iterable
+
     any_iterable.containing(1, 2, 3) == [1, 2, 3, 4, 5]
     any_iterable.containing_only(1, 2, 3) == [2, 3, 1]
     any_iterable.not_containing(1, 2) == [3, 4]
@@ -81,6 +89,8 @@ objects:
 --------
 
 ::
+
+    from equals import anything
 
     anything == None
     anything == True
@@ -121,4 +131,4 @@ See LICENSE
    :target: http://badge.fury.io/py/equals
 
 .. |Coveralls| image:: https://img.shields.io/coveralls/toddsifleet/equals.svg
-   :target: https://coveralls.io/r/toddsifleet/equals  
+   :target: https://coveralls.io/r/toddsifleet/equals
