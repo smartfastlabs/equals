@@ -62,3 +62,8 @@ class TestContainingOnly(object):
 
 def test_order_of_test_does_not_matter():
     assert [1, 2, 3, 4, 5] == any_iterable.containing(1, 2, 3)
+
+
+def test_length():
+    assert [1, 2] == any_iterable.with_length(2)
+    assert [1, 2] != any_iterable.with_length(3)
