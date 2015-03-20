@@ -33,6 +33,11 @@ class Constraints(object):
         return ContainingOnly
 
     @constraint
+    def with_length(self):
+        from equals.constraints.length import Length
+        return Length
+
+    @constraint
     def matching(self):
         from equals.constraints.strings.regex import Regex
         return Regex

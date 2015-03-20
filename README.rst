@@ -76,6 +76,7 @@ iterators:
     any_iterable.containing(1, 2, 3) == [1, 2, 3, 4, 5]
     any_iterable.containing_only(1, 2, 3) == [2, 3, 1]
     any_iterable.not_containing(1, 2) == [3, 4]
+    any_iterable.with_length(2) == [3, 4]
 
 objects:
 --------
@@ -121,4 +122,4 @@ See LICENSE
    :target: http://badge.fury.io/py/equals
 
 .. |Coveralls| image:: https://img.shields.io/coveralls/toddsifleet/equals.svg
-   :target: https://coveralls.io/r/toddsifleet/equals  
+   :target: https://coveralls.io/r/toddsifleet/equals
