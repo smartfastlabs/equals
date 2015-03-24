@@ -31,6 +31,7 @@ Usage with doubles:
 -------------------
 
 ::
+
     from doubles import expect
     from equals import any_string
 
