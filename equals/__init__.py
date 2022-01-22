@@ -17,7 +17,7 @@ except NameError:
 any_number = instance_of(numbers.Number)
 any_int = instance_of(int)
 any_float = instance_of(float)
-any_iterable = instance_of(collections.abc.Iterable)
+any_iterable = instance_of(collections.Iterable)
 any_dict = instance_of(dict)
 any_list = instance_of(list)
 any_tuple = instance_of(tuple)
