@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-__version__ = '0.0.25'
+__version__ = '1.0.0'
 
 import numbers  # noqa
 import collections  # noqa
