@@ -3,11 +3,15 @@ from __future__ import absolute_import
 __version__ = '1.0.0'
 
 import numbers  # noqa
-import collections  # noqa
 
 from equals.equals import Equals as instance_of  # noqa
 from equals.constraints.anything_true import AnythingTrue  # noqa
 from equals.constraints.anything_false import AnythingFalse  # noqa
+
+try:
+    from collections.abc import Iterable  # noqa
+except ImportError:
+    from collections import Iterable  # noqa
 
 anything = instance_of()
 try:
@@ -17,7 +21,7 @@ except NameError:
 any_number = instance_of(numbers.Number)
 any_int = instance_of(int)
 any_float = instance_of(float)
-any_iterable = instance_of(collections.Iterable)
+any_iterable = instance_of(Iterable)
 any_dict = instance_of(dict)
 any_list = instance_of(list)
 any_tuple = instance_of(tuple)
