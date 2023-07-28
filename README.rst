@@ -127,7 +127,7 @@ Development:
 
 ::
 
-    >> git clone https://github.com/toddsifleet/equals
+    >> git clone https://github.com/smartfastlabs/equals
     >> cd equals
     >> make bootstrap
     >> make
@@ -137,11 +137,11 @@ License:
 
 See LICENSE
 
-.. |Travis Test Status| image:: https://travis-ci.org/toddsifleet/equals.svg?branch=master
-   :target: https://travis-ci.org/toddsifleet/equals
+.. |Travis Test Status| image:: https://travis-ci.org/smartfastlabs/equals.svg?branch=master
+   :target: https://travis-ci.org/smartfastlabs/equals
 
 .. |PyPi Version| image:: https://badge.fury.io/py/equals.svg
    :target: http://badge.fury.io/py/equals
 
-.. |Coveralls| image:: https://img.shields.io/coveralls/toddsifleet/equals.svg
-   :target: https://coveralls.io/r/toddsifleet/equals
+.. |Coveralls| image:: https://img.shields.io/coveralls/smartfastlabs/equals.svg
+   :target: https://coveralls.io/r/smartfastlabs/equals

@@ -15,5 +15,5 @@ setup(
     packages=['equals', 'equals.constraints', 'equals.constraints.numbers', 'equals.constraints.strings'],
     zip_safe=True,
     license='MIT',
-    url='https://github.com/toddsifleet/equals',
+    url='https://github.com/smartfastlabs/equals',
 )
