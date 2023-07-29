@@ -9,12 +9,12 @@ commands:
           pip-dependency-file: requirements-dev.txt
       - run:
           name: Install Equals
-          command: pip install -e .   
+          command: pip install -e .
   test:
     steps:
       - run:
           name: Run tests
-          command: pytest -s test  
+          command: pytest -s test
 
 orbs:
   python: circleci/python@1.5.0
@@ -45,7 +45,5 @@ jobs:
 workflows:
   run:
     jobs:
-      - python2-7
       - python3-10
-      - python3-11
 
