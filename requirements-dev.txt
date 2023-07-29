@@ -1,4 +1,4 @@
-flake8==2.1.0
+flake8==6.0.0
 Pytest==6.2.5
 mock==1.0.1
 doubles==1.5.3

@@ -69,7 +69,7 @@ class TestMatching(object):
     def test_representation(self):
         expected = (
             "Any instance of <(type|class) '(basestring|str)'> "
-            "matching \^abc\$"
+            "matching \\^abc\\$"
         )
         assert re.match(expected, str(self.test_obj))
         assert re.match('<Equals {}>'.format(expected), repr(self.test_obj))
