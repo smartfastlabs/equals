@@ -1,6 +1,6 @@
 flake8==2.1.0
 Pytest==6.2.5
 mock==1.0.1
-doubles-1.5.3
+doubles==1.5.3
 coverage==6.2
 coveralls==3.3.1
