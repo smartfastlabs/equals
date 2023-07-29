@@ -4,26 +4,42 @@ orbs:
   python: circleci/python@1.5.0
   coveralls: coveralls/coveralls@1.0.6
 
+"-": &build-and-test:
+  steps:
+    - checkout
+    - python/install-packages:
+        pkg-manager: pip
+        pip-dependency-file: requirements-dev.txt
+    - run:
+        name: Install Equals
+        command: pip install -e .
+    - run:
+        name: Run tests
+        command: pytest -s test
+
+"-": &upload-coverage
+  steps:
+    - coveralls/upload:
+        path_to_lcov:  .coverage
+
 jobs:
-  build-and-test:
+  python2.7:
+    <<: *build-and-test
+    docker:
+      - image: cimg/python:2.7.18
+  python3.10:
+    <<: [*build-and-test, *upload-coverage]
     docker:
       - image: cimg/python:3.10.12-node
-    steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: pip
-          pip-dependency-file: requirements-dev.txt
-      - run:
-          name: Install Equals
-          command: pip install -e .
-      - run:
-          name: Run tests
-          command: pytest -s test
-      - coveralls/upload:
-          path_to_lcov:  .coverage
+  python3.11:
+    <<: *build-and-test
+    docker:
+      - image: cimg/python:3.11.4
 
 workflows:
   run:
     jobs:
-      - build-and-test
+      - python2.7
+      - python3.10
+      - python3.11
 
