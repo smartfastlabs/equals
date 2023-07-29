@@ -137,8 +137,9 @@ License:
 
 See LICENSE
 
-.. |Travis Test Status| image:: https://travis-ci.org/smartfastlabs/equals.svg?branch=master
-   :target: https://travis-ci.org/smartfastlabs/equals
+
+.. |Travis Test Status| image:: https://dl.circleci.com/status-badge/img/gh/smartfastlabs/equals/tree/master.svg?style=svg
+   :target: https://dl.circleci.com/status-badge/redirect/gh/smartfastlabs/equals/tree/master
 
 .. |PyPi Version| image:: https://badge.fury.io/py/equals.svg
    :target: http://badge.fury.io/py/equals
