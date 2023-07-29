@@ -2,9 +2,11 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.5.0
+  coveralls: coveralls/coveralls@1.0.6
 
 jobs:
   build-and-test:
+    executor: python/default
     docker:
       - image: cimg/python:3.10.12
     steps:
@@ -18,6 +20,8 @@ jobs:
       - run:
           name: Run tests
           command: pytest -s test
+      - coveralls/upload:
+          path_to_lcov:  .coverage
 
 workflows:
   run:
