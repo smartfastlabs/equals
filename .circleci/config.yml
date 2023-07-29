@@ -12,6 +12,9 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
           pip-dependency-file: requirements-dev.txt
+      - python/install-equals:
+          name: Install Equals
+          command: pip install -e .
       - run:
           name: Run tests
           command: pytest -s test
