@@ -45,5 +45,7 @@ jobs:
 workflows:
   run:
     jobs:
+      - python2-7
       - python3-10
+      - python3-11
 
