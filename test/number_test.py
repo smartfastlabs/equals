@@ -17,12 +17,9 @@ class TestLessThan(object):
         assert 4 == self.test_obj
 
     def test_representation(self):
-        expected = (
-            "Any instance of <class 'numbers.Number'> "
-            "less than 5"
-        )
+        expected = "Any instance of <class 'numbers.Number'> " "less than 5"
         assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert repr(self.test_obj) == "<Equals {}>".format(expected)
 
 
 class TestGreateThan(object):
@@ -41,12 +38,9 @@ class TestGreateThan(object):
         assert 6 == self.test_obj
 
     def test_representation(self):
-        expected = (
-            "Any instance of <class 'numbers.Number'> "
-            "greater than 5"
-        )
+        expected = "Any instance of <class 'numbers.Number'> " "greater than 5"
         assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert repr(self.test_obj) == "<Equals {}>".format(expected)
 
 
 class TestLessThanOrEqual(object):
@@ -65,12 +59,9 @@ class TestLessThanOrEqual(object):
         assert 4 == self.test_obj
 
     def test_representation(self):
-        expected = (
-            "Any instance of <class 'numbers.Number'> "
-            "less than or equal to 5"
-        )
+        expected = "Any instance of <class 'numbers.Number'> " "less than or equal to 5"
         assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert repr(self.test_obj) == "<Equals {}>".format(expected)
 
 
 class TestGreateThanOrEqual(object):
@@ -90,11 +81,10 @@ class TestGreateThanOrEqual(object):
 
     def test_representation(self):
         expected = (
-            "Any instance of <class 'numbers.Number'> "
-            "greater than or equal to 5"
+            "Any instance of <class 'numbers.Number'> " "greater than or equal to 5"
         )
         assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert repr(self.test_obj) == "<Equals {}>".format(expected)
 
 
 class TestBetween(object):
@@ -119,9 +109,6 @@ class TestBetween(object):
         assert 2 == self.test_obj
 
     def test_representation(self):
-        expected = (
-            "Any instance of <class 'numbers.Number'> "
-            "between 1 and 3"
-        )
+        expected = "Any instance of <class 'numbers.Number'> " "between 1 and 3"
         assert str(self.test_obj) == expected
-        assert repr(self.test_obj) == '<Equals {}>'.format(expected)
+        assert repr(self.test_obj) == "<Equals {}>".format(expected)

@@ -2,7 +2,7 @@ from __future__ import print_function
 
 from coverage import coverage
 
-cov = coverage(source=('equals',))
+cov = coverage(source=("equals",))
 cov.start()
 
 
