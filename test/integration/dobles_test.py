@@ -1,6 +1,6 @@
-from doubles import expect, allow
-from doubles.exceptions import UnallowedMethodCallError
 import pytest
+from dobles import allow, expect
+from dobles.exceptions import UnallowedMethodCallError
 
 from equals import any_string
 

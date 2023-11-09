@@ -43,6 +43,8 @@ black = "23.9.1"
 optional = true
 
 [tool.poetry.group.test.dependencies]
+mock = "*"
+dobles = "*"
 pytest = "*"
 coverage = "*"
 coveralls = "*"

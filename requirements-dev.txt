@@ -1,6 +1,0 @@
-flake8
-Pytest
-mock
-doubles
-coverage
-coveralls

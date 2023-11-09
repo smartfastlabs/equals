@@ -12,7 +12,7 @@ Equals allows you to assert certain equality constraints between python
 objects during testing. There are times where we don't want to assert
 absolute equality, e.g. we need to ensure two lists have the same
 elements, but don't care about order.  This was designed specifically for
-usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `doubles <https://github.com/uber/doubles>`_.
+usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `dobles <https://github.com/smartfastlabs/dobles>`_.
 
 
 Usage with Mock:
@@ -27,12 +27,12 @@ Usage with Mock:
     test_object.method({'bob': 'barker'})
     test_object.method.assert_called_with(any_dict)
 
-Usage with doubles:
+Usage with dobles:
 -------------------
 
 ::
 
-    from doubles import expect
+    from dobles import expect
     from equals import any_string
 
 
