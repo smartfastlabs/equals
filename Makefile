@@ -4,7 +4,8 @@ test: clean lint
 
 .PHONY: lint
 lint:
-	@flake8 equals test
+	@flake8 --extend-ignore E501 equals test
+	@black . 
 
 .PHONY: clean
 clean:
@@ -12,5 +13,10 @@ clean:
 
 .PHONY: bootstrap
 bootstrap:
-	@pip3 install -r requirements-dev.txt
-	@pip3 install -e .
+	@pip install poetry 
+	@poetry install --with lint,test,docs
+	@poetry shell
+
+.PHONY: docs
+docs:
+	@$(MAKE) -C docs html

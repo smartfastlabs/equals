@@ -2,18 +2,23 @@ from setuptools import setup
 
 import equals
 
-with open('README.rst') as f:
+with open("README.rst") as f:
     long_description = f.read()
 
 setup(
-    description='Python Fuzzy Matchers',
+    description="Python Fuzzy Matchers",
     long_description=long_description,
-    name='equals',
+    name="equals",
     version=equals.__version__,
-    author='Todd Sifleet',
-    author_email='todd.siflet@gmail.com',
-    packages=['equals', 'equals.constraints', 'equals.constraints.numbers', 'equals.constraints.strings'],
+    author="Todd Sifleet",
+    author_email="todd.siflet@gmail.com",
+    packages=[
+        "equals",
+        "equals.constraints",
+        "equals.constraints.numbers",
+        "equals.constraints.strings",
+    ],
     zip_safe=True,
-    license='MIT',
-    url='https://github.com/smartfastlabs/equals',
+    license="MIT",
+    url="https://github.com/smartfastlabs/equals",
 )
