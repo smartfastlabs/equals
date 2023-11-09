@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "equals"
 version = "3.0.0"
-description = "Mock equality objects for testing"
+description = "Fuzzy Mock objects for testing"
 authors = ["Todd Sifleet <todd@smartfast.com>"]
 maintainers = ["Todd Sifleet <todd@smartfast.com>"]
 readme = "README.rst"
