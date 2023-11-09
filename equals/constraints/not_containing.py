@@ -2,7 +2,7 @@ from .containing import Containing
 
 
 class NotContaining(Containing):
-    _description = 'not containing: {}'
+    _description = "not containing: {}"
 
     def _check(self, value):
         # This will check list like objects

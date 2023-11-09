@@ -2,7 +2,7 @@ from .base import Base
 
 
 class WithAttrs(Base):
-    _description = 'with attrs: {}'
+    _description = "with attrs: {}"
 
     def _check(self, value):
         for k in self.args:

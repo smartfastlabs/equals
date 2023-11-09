@@ -4,7 +4,7 @@ from ..base import Base
 class Between(Base):
     @property
     def description(self):
-        return 'between {min} and {max}'.format(
+        return "between {min} and {max}".format(
             min=self.min_val,
             max=self.max_val,
         )

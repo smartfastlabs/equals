@@ -2,7 +2,7 @@ from .base import Base
 
 
 class Containing(Base):
-    _description = 'containing: {}'
+    _description = "containing: {}"
 
     def _check(self, value):
         # This will check list like objects
