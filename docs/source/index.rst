@@ -12,7 +12,6 @@ usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `dobles <https://gith
    :maxdepth: 2
 
    installation
-   Differences from Mock <mock>
    usage
    api
 
