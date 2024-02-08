@@ -18,7 +18,7 @@ Equals allows you to assert certain equality constraints between python
 objects during testing. There are times where we don't want to assert
 absolute equality, e.g. we need to ensure two lists have the same
 elements, but don't care about order.  This was designed specifically for
-usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `equals <https://github.com/smartfastlabs/equals>`_.
+usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `dobles <https://github.com/smartfastlabs/dobles>`_.
 
 Documentation
 -------------
