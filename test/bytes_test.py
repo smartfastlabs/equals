@@ -5,6 +5,14 @@ def test_b_string():
     assert any_bytes == b"123 abc 456"
 
 
+def test_containing():
+    assert any_bytes.containing(b"123") == b"123 abc 456"
+
+
+def test_endswith():
+    assert any_bytes.ending_with(b"456") == b"123 abc 456"
+
+
 def test_string():
     assert any_bytes != "123 abc 456"
 
