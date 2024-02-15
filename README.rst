@@ -20,9 +20,10 @@ absolute equality, e.g. we need to ensure two lists have the same
 elements, but don't care about order.  This was designed specifically for
 usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `dobles <https://github.com/smartfastlabs/dobles>`_.
 
+**Full Documentation is available at http://equals.readthedocs.org/en/latest/.**
+
 API
 ===
-**Full Documentation is available at http://equals.readthedocs.org/en/latest/.**
 
 strings:
 --------
@@ -92,6 +93,8 @@ objects:
     anything.with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
     instance_of(Dummy).with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
 
+Usage
+=====
 
 With Mock:
 ----------
@@ -126,7 +129,7 @@ dobles:
 
 
 Installation:
--------------
+=============
 
 ::
 
@@ -134,7 +137,7 @@ Installation:
 
 
 Development
------------
+===========
 
 Source code is available at https://github.com/smartfastlabs/equals.
 
@@ -146,6 +149,6 @@ To build the documentation locally, run ``make docs``.
 
 
 License
--------
+=======
 
 MIT: http://opensource.org/licenses/MIT
