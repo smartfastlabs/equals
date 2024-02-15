@@ -4,9 +4,9 @@ __version__ = "1.0.0"
 
 import numbers  # noqa
 
-from equals.equals import Equals as instance_of  # noqa
-from equals.constraints.anything_true import AnythingTrue  # noqa
 from equals.constraints.anything_false import AnythingFalse  # noqa
+from equals.constraints.anything_true import AnythingTrue  # noqa
+from equals.equals import Equals as instance_of  # noqa
 
 try:
     from collections.abc import Iterable  # noqa
@@ -18,6 +18,8 @@ try:
     any_string = instance_of(basestring)
 except NameError:
     any_string = instance_of(str)
+
+any_bytes = instance_of(bytes)
 any_number = instance_of(numbers.Number)
 any_int = instance_of(int)
 any_float = instance_of(float)
