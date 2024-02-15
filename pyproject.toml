@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "equals"
-version = "3.0.0"
+version = "3.1.0"
 description = "Fuzzy Mock objects for testing"
 authors = ["Todd Sifleet <todd@smartfast.com>"]
 maintainers = ["Todd Sifleet <todd@smartfast.com>"]
