@@ -20,10 +20,44 @@ absolute equality, e.g. we need to ensure two lists have the same
 elements, but don't care about order.  This was designed specifically for
 usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `dobles <https://github.com/smartfastlabs/dobles>`_.
 
-Documentation
--------------
 
-Documentation is available at http://equals.readthedocs.org/en/latest/.
+Usage
+=====
+**Full Documentation is available at http://equals.readthedocs.org/en/latest/.**
+
+With Mock:
+----------
+
+::
+
+    from mock import Mock
+    from equals import any_dict
+
+    test_object = Mock()
+    test_object.method({'bob': 'barker'})
+    test_object.method.assert_called_with(any_dict)
+
+dobles:
+-------
+
+::
+
+    from dobles import expect
+    from equals import any_string
+
+
+    class TestClass(object):
+        def method(self, arg):
+            return arg
+
+
+    test_object = TestClass()
+    expect(test_object).method.with_args(any_string.containing('bob'))
+
+    test_object.method('bob barker')
+
+**Note:** For more examples please see https://equals.readthedocs.io/en/latest/api.html.
+
 
 Installation:
 -------------
