@@ -22,8 +22,46 @@ usage with `Mock <https://pypi.python.org/pypi/mock>`_ and `dobles <https://gith
 
 **Full Documentation is available at http://equals.readthedocs.org/en/latest/.**
 
+Usage
+=====
+
+With Mock:
+----------
+
+::
+
+    from mock import Mock
+    from equals import any_dict
+
+    test_object = Mock()
+    test_object.method({'bob': 'barker'})
+    test_object.method.assert_called_with(any_dict)
+
+dobles:
+-------
+
+::
+
+    from dobles import expect
+    from equals import any_string
+
+
+    class TestClass(object):
+        def method(self, arg):
+            return arg
+
+
+    test_object = TestClass()
+    expect(test_object).method.with_args(any_string.containing('bob'))
+
+    test_object.method('bob barker')
+
+
+
 API
 ===
+
+**NOTE: These are examples, each of these examples illustrates a way that equals could be used while writing unit tests.**
 
 strings:
 --------
@@ -92,40 +130,6 @@ objects:
     instance_of(dict) == {}
     anything.with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
     instance_of(Dummy).with_attrs(foo='bar', bob='barker') == Dummy('bar', 'barker')
-
-Usage
-=====
-
-With Mock:
-----------
-
-::
-
-    from mock import Mock
-    from equals import any_dict
-
-    test_object = Mock()
-    test_object.method({'bob': 'barker'})
-    test_object.method.assert_called_with(any_dict)
-
-dobles:
--------
-
-::
-
-    from dobles import expect
-    from equals import any_string
-
-
-    class TestClass(object):
-        def method(self, arg):
-            return arg
-
-
-    test_object = TestClass()
-    expect(test_object).method.with_args(any_string.containing('bob'))
-
-    test_object.method('bob barker')
 
 
 Installation:
