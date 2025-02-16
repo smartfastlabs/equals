@@ -8,19 +8,16 @@
 
 ## Why Use equals?
 
-Sometimes in testing, you need to verify that objects match certain patterns rather than being exactly equal. For example, you might want to:
-- Check if a list contains specific elements, regardless of their order
-- Verify that a string contains a substring
-- Ensure a number falls within a specific range
-- Validate dictionary contents without requiring an exact match
+When writing tests with mocks and stubs, exact matching can make tests brittle and hard to maintain. Often, you care about certain properties of an object but not others. For example:
 
-`equals` makes these comparisons easy and expressive.
+- In integration tests, timestamps or UUIDs might change between test runs
+- When mocking API responses, you may only care about specific fields
+- Testing event handlers where message format may evolve over time
+- Verifying call arguments where some data is non-deterministic
 
-## Installation
+`equals` helps you write more maintainable tests by focusing on the properties that matter for your test cases, making your test suite more robust and easier to maintain.
 
-```bash
-pip install equals
-```
+The `equals` library provides a rich set of fuzzy matching capabilities that go beyond exact equality comparisons. Each matcher type (string, number, dictionary, etc.) implements its own set of flexible matching rules, allowing you to write tests that focus on the important aspects of your data while ignoring irrelevant details. These matchers can be combined and chained to create sophisticated matching patterns that make your tests both robust and maintainable.
 
 ## Quick Examples
 
@@ -74,94 +71,57 @@ def test_email_validation(user_service):
     assert user_service.validate_email('test@example.com')
 ```
 
-## Features
-
-The `equals` library provides a rich set of fuzzy matching capabilities that go beyond exact equality comparisons. Each matcher type (string, number, dictionary, etc.) implements its own set of flexible matching rules, allowing you to write tests that focus on the important aspects of your data while ignoring irrelevant details. These matchers can be combined and chained to create sophisticated matching patterns that make your tests both robust and maintainable.
+## Fuzzy Matching Capabilities
 
 ### String Matching
-
 ```python
 from equals import any_string
 
-# Match strings containing text
-assert any_string.containing('abc') == '123 abc 456'
-
-# Match string prefixes
-assert any_string.starting_with('abc') == 'abcdef'
-
-# Match string suffixes
-assert any_string.ending_with('abc') == '123abc'
-
-# Match regex patterns
-assert any_string.matching('^abc$') == 'abc'
+assert any_string.containing('abc') == '123 abc 456'     # Substring
+assert any_string.starting_with('abc') == 'abcdef'       # Prefix
+assert any_string.ending_with('abc') == '123abc'         # Suffix
+assert any_string.matching('^abc$') == 'abc'             # Regex
 ```
 
 ### Number Comparisons
-
 ```python
 from equals import any_number
 
-assert any_number.less_than(5) == 4
-assert any_number.less_than_or_equal_to(5) == 5
-assert any_number.greater_than(4) == 5
-assert any_number.between(1, 3) == 2
+assert any_number.less_than(5) == 4               # Less than
+assert any_number.between(1, 3) == 2              # Range
+assert any_number.greater_than(4) == 5            # Greater than
 ```
 
 ### Dictionary Validation
-
 ```python
 from equals import any_dict
 
-# Check for key-value pairs
-assert any_dict.containing(1, 2) == {1: 2, 2: 3, 4: 5}
-
-# Check using keyword arguments
-assert any_dict.containing(foo='bar') == {
-    'foo': 'bar',
-    'bob': 'barker'
-}
-
-# Verify absence of keys
-assert any_dict.not_containing(1, foo=5) == {'foo': 3, 4: 5}
+assert any_dict.containing(foo='bar') == {'foo': 'bar', 'other': 'value'}
+assert any_dict.not_containing(foo=5) == {'foo': 3, 'bar': 5}
 ```
 
 ### Iterable Operations
-
 ```python
 from equals import any_iterable
 
-# Check for elements
-assert any_iterable.containing(1, 2, 3) == [1, 2, 3, 4, 5]
-
-# Check for exact elements (order-independent)
-assert any_iterable.containing_only(1, 2, 3) == [2, 3, 1]
-
-# Check for absence of elements
-assert any_iterable.not_containing(1, 2) == [3, 4]
-
-# Check length
-assert any_iterable.with_length(2) == [3, 4]
+assert any_iterable.containing(1, 2) == [1, 2, 3]        # Contains elements
+assert any_iterable.containing_only(1, 2) == [2, 1]      # Exact elements, any order
+assert any_iterable.with_length(2) == [3, 4]             # Length check
 ```
 
 ### Object Matching
-
 ```python
 from equals import anything, instance_of
 
-# Match any value
-assert anything == None
-assert anything == True
-assert anything == {'key': 'value'}
+assert anything == 'any value'                           # Match anything
+assert instance_of(dict) == {}                          # Type check
+assert anything.with_attrs(foo='bar') == obj            # Attribute check
+```
 
-# Match by truth value
-assert anything_true == 'non-empty string'
-assert anything_false == ''
+## Installation
 
-# Match by type
-assert instance_of(dict) == {}
-
-# Match by attributes
-assert anything.with_attrs(foo='bar') == obj_with_foo_bar
+```bash
+pip install equals
 ```
 
 ## Development
