@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "equals"
-version = "3.1.1"
+version = "3.1.2"
 description = "Fuzzy Mock objects for testing"
 authors = ["Todd Sifleet <todd@smartfast.com>"]
 maintainers = ["Todd Sifleet <todd@smartfast.com>"]
-readme = "README.rst"
+readme = "README.md"
 repository = "https://github.com/smartfastlabs/equals"
 license = "MIT"
 keywords = [
