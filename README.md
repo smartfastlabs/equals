@@ -73,6 +73,7 @@ def test_email_validation(user_service):
 
 ## Fuzzy Matching Capabilities
 
+These are just examples showcasing `equals` fuzzy matching api, the actual example code isn't all that useful. Think of how you could use these in unit tests. 
 ### String Matching
 ```python
 from equals import any_string
